@@ -1,19 +1,26 @@
 "use client";
-import { useEffect } from 'react';
-import {useFormState} from 'react-dom'
+import { registerUser } from "@/lib/actions/registerUser";
+import { useEffect, useState } from "react";
+import { useFormState } from "react-dom";
+import { toast } from "react-toastify";
+import { Button } from "../ui/button";
 // import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
 
 function SignupForm() {
-//   const handleUpload = (result: CldUploadWidgetResults) => {
-//     const info = result.info;
-//     console.log(info);
-//   };
-const [state, formAction] = useFormState(increment, null)
+  //   const handleUpload = (result: CldUploadWidgetResults) => {
+  //     const info = result.info;
+  //     console.log(info);
+  //   };
+  const [state, formAction] = useFormState(registerUser, null);
 
-useEffect(() => {
-    
-},[])
-
+  useEffect(() => {
+    if (state?.error) {
+      toast.error(state?.error);
+    }
+    if (state?.success) {
+      toast.success(state?.success);
+    }
+  }, [state]);
 
   return (
     <form action={formAction} className="mt-8 grid grid-cols-6 gap-6">
@@ -98,7 +105,7 @@ useEffect(() => {
         <input
           type="password"
           id="PasswordConfirmation"
-          name="passwordConfirmation"
+          name="confirmPassword"
           required
           className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
         />
@@ -131,6 +138,7 @@ useEffect(() => {
         <textarea
           id="bio"
           name="bio"
+          //@ts-ignore
           className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
         />
       </div>
@@ -162,9 +170,7 @@ useEffect(() => {
       </div>
 
       <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-        <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-          Create an account
-        </button>
+        <Button type="submit">Create an account</Button>
 
         <p className="mt-4 text-sm text-gray-500 sm:mt-0">
           Already have an account?

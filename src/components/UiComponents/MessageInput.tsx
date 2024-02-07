@@ -1,11 +1,16 @@
 "use client";
 import { SendHorizontal, SmilePlus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import EmojiPicker from "emoji-picker-react";
+import { useFormState } from "react-dom";
+import { sendMessage } from "@/lib/actions/sendMessage";
+import { Button } from "../ui/button";
 
 function MessageInput() {
   const [input, setInput] = useState("");
   const [emoji, setEmoji] = useState(false);
+  const [state, formAction] = useFormState(sendMessage, null);
+  const formRef = useRef(null);
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     emoji?: string
@@ -18,18 +23,40 @@ function MessageInput() {
       setInput(e.target.value);
     }
   };
+  useEffect(() => {
+    if (state?.success) {
+      //@ts-ignore
+      formRef?.current?.reset();
+    } else {
+      console.log("not sent");
+    }
+  }, [state]);
   return (
-    <div className="h-14 relative">
+    <form action={formAction} className="h-14 relative" ref={formRef}>
       <input
         type="text"
         className="indent-5 rounded-full w-full h-full border border-primary outline-none"
         value={input}
+        name="content"
         onChange={handleChange}
         placeholder="Type a Message"
       />
+      <input
+        type="hidden"
+        name="receiverId"
+        value={"659eef661b2527211153d705"}
+      />
+      <input type="hidden" name="ownerId" value={"659eef661b2527211153d705"} />
       <div className="flex">
         {input && (
-          <SendHorizontal className="absolute text-primary right-4 top-0 bottom-0 my-auto cursor-pointer" />
+          <Button
+            variant={"ghost"}
+            size={"sm"}
+            type="submit"
+            className="absolute text-primary right-10 top-0 bottom-0 my-auto cursor-pointer"
+          >
+            <SendHorizontal />
+          </Button>
         )}
         <div className="absolute top-[-500px] left-0">
           <EmojiPicker
@@ -42,7 +69,7 @@ function MessageInput() {
           onClick={() => setEmoji(!emoji)}
         />
       </div>
-    </div>
+    </form>
   );
 }
 

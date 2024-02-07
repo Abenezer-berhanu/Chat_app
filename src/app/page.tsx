@@ -1,6 +1,9 @@
-import SideBar from "@/components/UiComponents/SideBar";
-import Image from "next/image";
+import SignupForm from "@/components/UiComponents/SignupForm";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <SignupForm />
+    </div>
+  );
 }

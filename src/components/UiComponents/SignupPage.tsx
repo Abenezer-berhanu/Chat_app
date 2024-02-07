@@ -30,24 +30,16 @@ function Signup() {
               </svg>
             </a>
 
-            <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+            <h2 className="mt-6 text-2xl font-bold text-black sm:text-3xl md:text-4xl">
               Welcome to Squid 🦑
             </h2>
-
-            <p className="mt-4 leading-relaxed text-white/90">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-              nam dolorum aliquam, quibusdam aperiam voluptatum.
-            </p>
           </div>
         </section>
 
         <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
           <div className="max-w-xl lg:max-w-3xl">
             <div className="relative -mt-16 block lg:hidden">
-              <a
-                className="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20"
-                href="#"
-              >
+              <div className="inline-flex size-16 items-center justify-center rounded-full bg-white text-blue-600 sm:size-20">
                 <span className="sr-only">Home</span>
                 <svg
                   className="h-8 sm:h-10"
@@ -60,16 +52,11 @@ function Signup() {
                     fill="currentColor"
                   />
                 </svg>
-              </a>
+              </div>
 
               <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                Welcome to Squid 🦑
+                Welcome to AbenuChat 🦑
               </h1>
-
-              <p className="mt-4 leading-relaxed text-gray-500">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
-              </p>
             </div>
             <SignupForm />
           </div>

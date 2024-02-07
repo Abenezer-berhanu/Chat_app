@@ -24,6 +24,7 @@ function SignupForm() {
 
   return (
     <form action={formAction} className="mt-8 grid grid-cols-6 gap-6">
+      <h1 className="font-bold text-2xl col-span-6">Sign Up</h1>
       <div className="col-span-6 sm:col-span-6">
         <label
           htmlFor="FirstName"
@@ -143,16 +144,16 @@ function SignupForm() {
         />
       </div>
 
-      <div className="flex w-full flex-col col-span-6 gap-1">
+      {/* <div className="flex w-full flex-col col-span-6 gap-1">
         <label className="text-black text-sm font-semibold tracking-wider">
           Thumbnail:
         </label>
-        {/* <CldUploadButton
+        <CldUploadButton
           uploadPreset={`${process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}`}
           onUpload={handleUpload}
           className="w-full border border-primary bg-primary text-white h-20 rounded-md"
-        ></CldUploadButton> */}
-      </div>
+        ></CldUploadButton>
+      </div> */}
 
       <div className="col-span-6">
         <p className="text-sm text-gray-500">
@@ -174,7 +175,7 @@ function SignupForm() {
 
         <p className="mt-4 text-sm text-gray-500 sm:mt-0">
           Already have an account?
-          <a href="#" className="text-gray-700 underline">
+          <a href="/login" className="text-gray-700 underline">
             Log in
           </a>
           .

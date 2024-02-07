@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
 
 function SignupForm() {
   return (
@@ -9,7 +9,6 @@ function SignupForm() {
           <Image
             width={1000}
             height={1000}
-            
             alt=""
             src="https://images.unsplash.com/photo-1552068751-34cb5cf055b3?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             className="absolute inset-0 h-full w-full object-cover opacity-80"
@@ -74,7 +73,7 @@ function SignupForm() {
             </div>
 
             <form action="#" className="mt-8 grid grid-cols-6 gap-6">
-              <div className="col-span-6 sm:col-span-3">
+              <div className="col-span-6 sm:col-span-6">
                 <label
                   htmlFor="FirstName"
                   className="block text-sm font-medium text-gray-700"
@@ -85,24 +84,24 @@ function SignupForm() {
                 <input
                   type="text"
                   id="FirstName"
-                  name="first_name"
-                  className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  name="fullName"
+                  className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
                 />
               </div>
 
-              <div className="col-span-6 sm:col-span-3">
+              <div className="col-span-6 sm:col-span-6">
                 <label
-                  htmlFor="LastName"
+                  htmlFor="username"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Last Name
+                  User Name
                 </label>
 
                 <input
                   type="text"
-                  id="LastName"
-                  name="last_name"
-                  className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  id="username"
+                  name="userName"
+                  className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
                 />
               </div>
 
@@ -119,7 +118,7 @@ function SignupForm() {
                   type="email"
                   id="Email"
                   name="email"
-                  className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
                 />
               </div>
 
@@ -136,7 +135,7 @@ function SignupForm() {
                   type="password"
                   id="Password"
                   name="password"
-                  className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
                 />
               </div>
 
@@ -152,24 +151,23 @@ function SignupForm() {
                   type="password"
                   id="PasswordConfirmation"
                   name="password_confirmation"
-                  className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                  className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
                 />
               </div>
 
-              <div className="col-span-6">
-                <label htmlFor="MarketingAccept" className="flex gap-4">
-                  <input
-                    type="checkbox"
-                    id="MarketingAccept"
-                    name="marketing_accept"
-                    className="size-5 rounded-md border-gray-200 bg-white shadow-sm"
-                  />
-
-                  <span className="text-sm text-gray-700">
-                    I want to receive emails about events, product updates and
-                    company announcements.
-                  </span>
+              <div className="col-span-6 sm:col-span-6">
+                <label
+                  htmlFor="bio"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Bio
                 </label>
+
+                <textarea
+                  id="bio"
+                  name="bio"
+                  className="mt-1 w-full rounded-md bg-white outline-none p-2 border border-primary text-sm text-gray-700 shadow-sm"
+                />
               </div>
 
               <div className="col-span-6">

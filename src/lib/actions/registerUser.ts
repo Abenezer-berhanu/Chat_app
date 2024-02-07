@@ -28,9 +28,13 @@ export const registerUser = async (currentState: any, formData: FormData) => {
     if (!emailRegex.test(email)) {
       return { error: "Invalid email" };
     }
+    const existUser = await userModel.findOne({ email });
+    if (existUser) {
+      return { error: "User already exists please login" };
+    }
     await connectDB();
     const newUser = new userModel(dataFromUser);
-    const savedUser = await newUser.save()
+    const savedUser = await newUser.save();
     return { success: `${savedUser?.fullName}registered successfully` };
   } catch (error) {
     console.log(error);

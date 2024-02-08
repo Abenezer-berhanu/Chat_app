@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "react-toastify";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 // import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
 
 function SignupForm() {
+  const { push } = useRouter();
   //   const handleUpload = (result: CldUploadWidgetResults) => {
   //     const info = result.info;
   //     console.log(info);
@@ -19,6 +21,7 @@ function SignupForm() {
     }
     if (state?.success) {
       toast.success(state?.success);
+      push("/login");
     }
   }, [state]);
 

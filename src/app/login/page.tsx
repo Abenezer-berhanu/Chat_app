@@ -1,3 +1,4 @@
+"use server";
 import Login from "@/components/UiComponents/Login";
 
 async function login() {

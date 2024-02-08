@@ -1,23 +1,16 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { signIn } from "@/lib/auth";
-
+import {
+  handleCredentialsLogin,
+  handleGitHubLogin,
+  handleGoogleLogin,
+} from "@/lib/actions/userLogin";
+import { auth } from "@/lib/auth";
+import Link from "next/link";
 
 async function Login() {
-  const handleGitHubLogin = async () => {
-    "use server";
-    await signIn("github");
-  };
-  const handleGoogleLogin = async () => {
-    "use server";
-    await signIn("google");
-  };
-  const handleCredentialsLogin = async (formData:FormData) => {
-    const {email, password} = Object.fromEntries(formData)
-    "use server";
-    //@ts-ignore
-    await signIn("credentials", { email, password });
-  };
+  const session = await auth();
+
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen ">
@@ -68,7 +61,10 @@ async function Login() {
               </form>
             </div>
 
-            <form action={handleCredentialsLogin} className="mt-8 grid grid-cols-6 gap-4">
+            <form
+              action={handleCredentialsLogin}
+              className="mt-8 grid grid-cols-6 gap-4"
+            >
               <div className="col-span-6">
                 <label
                   htmlFor="FirstName"
@@ -101,13 +97,17 @@ async function Login() {
                 />
               </div>
               <div className="flex flex-col gap-2 col-span-6 sm:items-center sm:gap-4">
-                <Button className="w-full h-10">Login</Button>
-
+                <Button className="w-full h-10" type="submit">
+                  Login
+                </Button>
                 <p className="mt-4 text-sm text-white sm:mt-0">
                   Don{"'"}t have an account &nbsp;
-                  <a href="#" className="text-primary font-semibold underline">
+                  <Link
+                    href="/"
+                    className="text-primary font-semibold underline"
+                  >
                     Sign up
-                  </a>
+                  </Link>
                 </p>
               </div>
             </form>

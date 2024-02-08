@@ -21,11 +21,10 @@ const UserSchema = new mongoose.Schema(
     },
     country: {
       type: "string",
-      default: "United States"
+      default: "United States",
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.models?.Message ||
-  mongoose.model("Message", UserSchema);
+export default mongoose.models?.User || mongoose.model("User", UserSchema);

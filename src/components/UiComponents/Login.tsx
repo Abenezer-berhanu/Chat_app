@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { auth, signIn } from "@/lib/auth";
+import { signIn } from "@/lib/auth";
+
 
 async function Login() {
   const handleGitHubLogin = async () => {
@@ -10,6 +11,12 @@ async function Login() {
   const handleGoogleLogin = async () => {
     "use server";
     await signIn("google");
+  };
+  const handleCredentialsLogin = async (formData:FormData) => {
+    const {email, password} = Object.fromEntries(formData)
+    "use server";
+    //@ts-ignore
+    await signIn("credentials", { email, password });
   };
   return (
     <section className="bg-white">
@@ -61,20 +68,20 @@ async function Login() {
               </form>
             </div>
 
-            <form action="#" className="mt-8 grid grid-cols-6 gap-4">
+            <form action={handleCredentialsLogin} className="mt-8 grid grid-cols-6 gap-4">
               <div className="col-span-6">
                 <label
                   htmlFor="FirstName"
                   className="block text-md font-semibold text-black"
                 >
-                  User Name
+                  Email
                 </label>
 
                 <input
                   type="text"
                   id="FirstName"
-                  name="first_name"
-                  className="mt-1 w-full rounded-sm border-gray-200 bg-white text-sm text-gray-700 shadow-sm p-2 pr-0 outline-none"
+                  name="email"
+                  className="mt-1 w-full rounded-sm border-gray-200 bg-white text-sm text-black font-semibold shadow-sm p-2 pr-0 outline-none"
                 />
               </div>
 
@@ -83,15 +90,14 @@ async function Login() {
                   htmlFor="Password"
                   className="block text-md font-semibold text-black"
                 >
-                  {" "}
-                  Password{" "}
+                  Password
                 </label>
 
                 <input
                   type="password"
                   id="Password"
                   name="password"
-                  className="mt-1 w-full rounded-sm border-gray-200 bg-white text-sm text-gray-700 shadow-sm p-2 pr-0 outline-none"
+                  className="mt-1 w-full rounded-sm border-gray-200 bg-white text-sm text-black font-semibold shadow-sm p-2 pr-0 outline-none"
                 />
               </div>
               <div className="flex flex-col gap-2 col-span-6 sm:items-center sm:gap-4">

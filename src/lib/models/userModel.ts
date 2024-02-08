@@ -8,11 +8,10 @@ const UserSchema = new mongoose.Schema(
     },
     userName: {
       type: String,
-      required: true,
       unique: true,
     },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String },
     bio: { type: String },
     image: {
       type: String,
@@ -22,8 +21,7 @@ const UserSchema = new mongoose.Schema(
     },
     country: {
       type: "string",
-      default: "United States",
-      required: true,
+      default: "United States"
     },
   },
   { timestamps: true }

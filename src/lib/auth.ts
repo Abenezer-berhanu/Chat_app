@@ -12,7 +12,6 @@ const getUser = async (email: string) => {
 };
 
 const login = async (credentials: { email: string; password: string }) => {
-  console.log(credentials.email);
   try {
     await connectDB();
     const existUser: any = await getUser(credentials.email);

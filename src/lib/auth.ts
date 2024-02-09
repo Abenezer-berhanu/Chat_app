@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import connectDB from "./config/connectDB";
 import userModel from "./models/userModel";
 import bcrypt from "bcrypt";
+import { authConfig } from "./auth.config";
 
 const getUser = async (email: string) => {
   const existUser = await userModel.findOne({ email }).lean();
@@ -114,5 +115,6 @@ export const {
       }
       return true;
     },
+    ...authConfig.callbacks,
   },
 });

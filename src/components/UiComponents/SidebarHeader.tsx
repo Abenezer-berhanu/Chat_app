@@ -1,7 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Bell, MoreHorizontal, Search } from "lucide-react";
+import { Bell, Search } from "lucide-react";
+import MyAccount from "./MyAccount";
 
-function SidebarHeader() {
+async function SidebarHeader() {
   return (
     <div className="flex justify-between w-full h-full">
       <Avatar>
@@ -9,9 +10,9 @@ function SidebarHeader() {
         <AvatarFallback className="animate-pulse"></AvatarFallback>
       </Avatar>
       <div className="flex gap-2 h-full items-center">
-        <Search className="scale-75 opacity-40" />
-        <Bell className="scale-75 opacity-40" />
-        <MoreHorizontal className="scale-75 opacity-40" />
+        <Search className="scale-75 opacity-40 cursor-pointer" />
+        <Bell className="scale-75 opacity-40 cursor-pointer" />
+        <MyAccount />
       </div>
     </div>
   );

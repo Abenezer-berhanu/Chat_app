@@ -6,3 +6,13 @@ export interface UserType {
     country: string;
     bio?:string;
   }
+
+export interface MessageType {
+    _id: string;
+    ownerId: string;
+    receiverId: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+}

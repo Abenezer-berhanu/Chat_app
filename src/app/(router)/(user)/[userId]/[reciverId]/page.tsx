@@ -26,7 +26,7 @@ async function page({
             <Suspense fallback={<Loading />}>
               <MainContentHeader receiverId={params.reciverId} />
             </Suspense>
-            <ContactConversations receiverId={params.reciverId} />
+            <ContactConversations id={session?.user?.id} receiverId={params.reciverId} />
             <MessageInput id={session?.user?.id} receiverId={params.reciverId} />
           </div>
           <div className="col-span-3 max-lg:col-span-0 flex flex-col gap-2 justify-center h-fit max-lg:hidden">

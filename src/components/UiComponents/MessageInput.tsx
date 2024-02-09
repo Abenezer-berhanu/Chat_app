@@ -30,12 +30,9 @@ function MessageInput({
     }
   };
   useEffect(() => {
-    console.log(state?.success);
     if (state?.success) {
       //@ts-ignore
       setInput("");
-    } else {
-      console.log("not sent");
     }
   }, [state]);
   return (

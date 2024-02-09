@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { auth } from "@/lib/auth";
 interface UserType {
-  _id: number;
+  _id: string;
   fullName: string;
   email: string;
   image: string;

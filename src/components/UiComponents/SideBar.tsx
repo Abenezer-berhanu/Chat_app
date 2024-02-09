@@ -4,9 +4,10 @@ import ActiveSection from "./ActiveSection";
 import UsersList from "./UsersList";
 import { Suspense } from "react";
 import { getUsers } from "@/lib/actions/getUsers";
+import { auth } from "@/lib/auth";
 
 interface UserType {
-  _id: number;
+  _id: string;
   fullName: string;
   email: string;
   image: string;
@@ -14,6 +15,8 @@ interface UserType {
 }
 
 async function SideBar() {
+  const session = await auth();
+  const id = session?.user?.id as string
   const users: any = await getUsers();
   return (
     <div className="flex flex-col gap-2">
@@ -27,11 +30,15 @@ async function SideBar() {
         <ActiveSection />
       </div>
       <Separator />
-      {users.map((user: UserType, idx: number) => (
-        <Suspense fallback={<div>loading..</div>}>
-          <UsersList user={user} key={idx} />
-        </Suspense>
-      ))}
+      {users.map((user: UserType, idx: number) =>
+        user._id == id ? (
+          ""
+        ) : (
+          <Suspense fallback={<div>loading..</div>}>
+            <UsersList user={user} key={idx} />
+          </Suspense>
+        )
+      )}
     </div>
   );
 }

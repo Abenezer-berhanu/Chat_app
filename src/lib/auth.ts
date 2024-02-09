@@ -98,10 +98,13 @@ export const {
             fullName = profile?.login;
             image = profile?.avatar_url;
           }
+          const number = Math.floor(Math.random() * 10000);
+          const userName = fullName.toLowerCase() + number;
           const newUserInfo = {
             email,
             fullName,
             image,
+            userName: userName.toString().replace(/\s/gm, ''),
           };
           const newUser = new userModel(newUserInfo);
           const savedUser = await newUser.save();
@@ -109,7 +112,6 @@ export const {
         } catch (error) {
           console.log(error);
           return false;
-          throw error;
         }
       }
       return true;

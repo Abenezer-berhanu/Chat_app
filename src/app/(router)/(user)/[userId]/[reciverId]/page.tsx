@@ -15,12 +15,12 @@ async function page({ params }: { params: { userId: string } }) {
 
   return (
     <div className="grid grid-cols-8 gap-3">
-      <div className="col-span-6 min-h-[700px] justify-start flex flex-col gap-4">
+      <div className="col-span-5 max-lg:col-span-8 min-h-[750px] justify-start flex flex-col gap-4">
         <MainContentHeader />
         <ContactConversations />
         <MessageInput />
       </div>
-      <div className="col-span-2 flex flex-col gap-2 justify-center h-fit">
+      <div className="col-span-3 max-lg:col-span-0 flex flex-col gap-2 justify-center h-fit max-lg:hidden">
         <ContactInfoHeader />
         <Separator />
         <ContactInfoMain />

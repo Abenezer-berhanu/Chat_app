@@ -28,9 +28,10 @@ async function SideBar() {
       </div>
       <Separator />
       {users.map((user: UserType, idx: number) => (
-        <UsersList user={user} key={idx} />
+        <Suspense fallback={<div>loading..</div>}>
+          <UsersList user={user} key={idx} />
+        </Suspense>
       ))}
-      <Suspense fallback={<div>loading..</div>}></Suspense>
     </div>
   );
 }

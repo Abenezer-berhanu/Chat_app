@@ -34,7 +34,7 @@ function ContactInfoMain({ params }: any) {
         </span>
         <span className="flex gap-1 items-center">
           <MapPin className="text-slate-500 scale-90" />
-          <p className="text-xs text-slate-600">
+          <p className="text-sm text-slate-600">
             2519 Busrnside Court, HORICON, WI, 53032
           </p>
         </span>

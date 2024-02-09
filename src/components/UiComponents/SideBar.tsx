@@ -5,18 +5,11 @@ import UsersList from "./UsersList";
 import { Suspense } from "react";
 import { getUsers } from "@/lib/actions/getUsers";
 import { auth } from "@/lib/auth";
-
-interface UserType {
-  _id: string;
-  fullName: string;
-  email: string;
-  image: string;
-  country: string;
-}
+import { UserType } from "@/lib/types";
 
 async function SideBar() {
   const session = await auth();
-  const id = session?.user?.id as string
+  const id = session?.user?.id as string;
   const users: any = await getUsers();
   return (
     <div className="flex flex-col gap-2">
@@ -34,8 +27,8 @@ async function SideBar() {
         user._id == id ? (
           ""
         ) : (
-          <Suspense fallback={<div>loading..</div>}>
-            <UsersList user={user} key={idx} />
+          <Suspense fallback={<div>loading..</div>} key={idx}>
+            <UsersList user={user} />
           </Suspense>
         )
       )}

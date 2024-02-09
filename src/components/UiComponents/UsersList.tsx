@@ -2,14 +2,8 @@
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { auth } from "@/lib/auth";
-interface UserType {
-  _id: string;
-  fullName: string;
-  email: string;
-  image: string;
-  country: string;
-  bio?: string
-}
+import { UserType } from "@/lib/types";
+
 
 async function UsersList(props: {user: UserType}) {
   const session = await auth()

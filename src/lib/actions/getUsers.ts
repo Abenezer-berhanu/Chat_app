@@ -12,4 +12,14 @@ const getUsers = async () => {
   }
 };
 
-export {getUsers};
+const getActiveUserInfo = async (receiverId: string) => {
+  try {
+    await connectDB();
+    const userInfo = await userModel.findById(receiverId).lean();
+    return userInfo;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getUsers, getActiveUserInfo };

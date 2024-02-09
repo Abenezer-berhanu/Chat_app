@@ -6,7 +6,13 @@ import { useFormState } from "react-dom";
 import { sendMessage } from "@/lib/actions/sendMessage";
 import { Button } from "../ui/button";
 
-function MessageInput() {
+function MessageInput({
+  receiverId,
+  id: ownerId,
+}: {
+  receiverId: string;
+  id: any;
+}) {
   const [input, setInput] = useState("");
   const [emoji, setEmoji] = useState(false);
   const [state, formAction] = useFormState(sendMessage, null);
@@ -24,9 +30,10 @@ function MessageInput() {
     }
   };
   useEffect(() => {
+    console.log(state?.success);
     if (state?.success) {
       //@ts-ignore
-      formRef?.current?.reset();
+      setInput("");
     } else {
       console.log("not sent");
     }
@@ -41,12 +48,8 @@ function MessageInput() {
         onChange={handleChange}
         placeholder="Type a Message"
       />
-      <input
-        type="hidden"
-        name="receiverId"
-        value={"659eef661b2527211153d705"}
-      />
-      <input type="hidden" name="ownerId" value={"659eef661b2527211153d705"} />
+      <input type="hidden" name="receiverId" value={receiverId} />
+      <input type="hidden" name="ownerId" value={ownerId} />
       <div className="flex">
         {input && (
           <Button

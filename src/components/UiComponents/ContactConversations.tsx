@@ -1,4 +1,5 @@
-function ContactConversations() {
+async function ContactConversations({ receiverId }: { receiverId: string }) {
+  
   return (
     <div className="h-full w-full rounded-md border shadow-sm shadow-primary p-2 flex flex-col gap-3">
       {/* contact conversation */}

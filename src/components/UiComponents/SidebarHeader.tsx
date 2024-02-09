@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Bell, Search } from "lucide-react";
 import MyAccount from "./MyAccount";
+import { auth } from "@/lib/auth";
 
 async function SidebarHeader() {
   return (

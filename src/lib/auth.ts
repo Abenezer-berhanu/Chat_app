@@ -76,13 +76,11 @@ export const {
       if (existUser) {
         //@ts-ignore
         session.user.id = existUser._id;
-        //@ts-ignore
-        session.user.isAdmin = existUser.isAdmin;
       }
     },
     //@ts-ignore
     async signIn({ account, profile }: any) {
-      if (account?.provider == "github" || account?.provider == "google") {
+      if (account?.provider === "github" || account?.provider === "google") {
         const provider = account?.provider;
         let email = profile?.email; //for google it's profile?.email  for github it's in profile?.email
         let fullName: string = ""; //for google it's profile?.name   for github it's in profile?.login
@@ -111,6 +109,7 @@ export const {
         } catch (error) {
           console.log(error);
           return false;
+          throw error;
         }
       }
       return true;

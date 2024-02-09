@@ -14,11 +14,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "@/lib/auth";
 import { MoreHorizontal } from "lucide-react";
+import { redirect } from "next/navigation";
 
 async function MyAccount() {
   const handleLogout = async () => {
     "use server";
     await signOut();
+    redirect("/login");
   };
   return (
     <DropdownMenu>

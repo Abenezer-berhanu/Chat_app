@@ -6,6 +6,7 @@ export const handleGitHubLogin = async () => {
     await signIn("github");
   } catch (error) {
     console.log(error);
+    throw error
   }
 };
 export const handleGoogleLogin = async () => {
@@ -13,6 +14,7 @@ export const handleGoogleLogin = async () => {
     await signIn("google");
   } catch (error) {
     console.log(error);
+    throw error
   }
 };
 export const handleCredentialsLogin = async (
@@ -27,5 +29,6 @@ export const handleCredentialsLogin = async (
     if (error.name.includes("CredentialsSignin")) {
       return { error: "invalid credentials" };
     }
+    throw error;
   }
 };

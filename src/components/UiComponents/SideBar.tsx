@@ -2,8 +2,19 @@ import { Separator } from "@/components/ui/separator";
 import SidebarHeader from "./SidebarHeader";
 import ActiveSection from "./ActiveSection";
 import UsersList from "./UsersList";
+import { Suspense } from "react";
+import { getUsers } from "@/lib/actions/getUsers";
 
-function SideBar() {
+interface UserType {
+  _id: number;
+  fullName: string;
+  email: string;
+  image: string;
+  country: string;
+}
+
+async function SideBar() {
+  const users: any = await getUsers();
   return (
     <div className="flex flex-col gap-2">
       {/* //sidebar header */}
@@ -16,12 +27,10 @@ function SideBar() {
         <ActiveSection />
       </div>
       <Separator />
-      <UsersList />
-      <UsersList />
-      <UsersList />
-      <UsersList />
-      <UsersList />
-      <UsersList />
+      {users.map((user: UserType, idx: number) => (
+        <UsersList user={user} key={idx} />
+      ))}
+      <Suspense fallback={<div>loading..</div>}></Suspense>
     </div>
   );
 }

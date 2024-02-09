@@ -8,22 +8,19 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 async function page({ params }: { params: { userId: string } }) {
-  const session = await auth()
-  if(!session){
-    redirect('/login')
+  const session = await auth();
+  if (!session) {
+    redirect("/login");
   }
-    
+
   return (
-    <div className="grid grid-cols-8 gap-2 h-full">
-      <div className="flex flex-col col-span-6 gap-2">
-        <div className="h-[50px]">
-          <MainContentHeader />
-        </div>
-        <Separator />
+    <div className="grid grid-cols-8 gap-3">
+      <div className="col-span-6 min-h-[700px] justify-start flex flex-col gap-4">
+        <MainContentHeader />
         <ContactConversations />
         <MessageInput />
       </div>
-      <div className="col-span-2 flex flex-col gap-2">
+      <div className="col-span-2 flex flex-col gap-2 justify-center h-fit">
         <ContactInfoHeader />
         <Separator />
         <ContactInfoMain />

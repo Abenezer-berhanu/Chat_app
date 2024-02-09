@@ -8,7 +8,7 @@ async function SidebarHeader() {
     <div className="flex justify-between w-full h-full">
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback className="animate-pulse"></AvatarFallback>
+        <AvatarFallback className="animate-pulse bg-slate-800"></AvatarFallback>
       </Avatar>
       <div className="flex gap-2 h-full items-center">
         <Search className="scale-75 opacity-40 cursor-pointer" />

@@ -4,13 +4,13 @@ import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
 
-function ContactInfoMain() {
+function ContactInfoMain({ params }: any) {
   return (
-    <div className="p-5 flex flex-col gap-2">
+    <div className="p-5 flex flex-col gap-2 border">
       <div className="flex flex-col gap-8 items-center">
         <Avatar className="scale-150 mx-auto">
           <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback className="animate-pulse"></AvatarFallback>
+          <AvatarFallback className="animate-pulse bg-slate-800"></AvatarFallback>
         </Avatar>
         <div>
           <p className="font-semibold text-xl capitalize">Jack P.Angulo</p>
